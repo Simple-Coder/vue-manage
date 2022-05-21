@@ -1,6 +1,8 @@
 <template>
   <el-container>
-    <el-aside width="auto">Aside</el-aside>
+    <el-aside width="auto">
+      <common-aside></common-aside>
+    </el-aside>
     <el-container>
       <el-header>Header</el-header>
       <el-main>Main</el-main>
@@ -9,13 +11,16 @@
 </template>
 
 <script>
+import CommonAside from "@/components/CommonAside";
 export default {
   name: "Home",
   data() {
     return {};
   },
 
-  components: {},
+  components: {
+    CommonAside,
+  },
 
   computed: {},
 
