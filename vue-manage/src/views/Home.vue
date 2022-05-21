@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <p>我是Home页面</p>
-  </div>
+  <el-container>
+    <el-aside width="auto">Aside</el-aside>
+    <el-container>
+      <el-header>Header</el-header>
+      <el-main>Main</el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -18,5 +22,11 @@ export default {
   methods: {},
 };
 </script>
-<style lang='css' scoped>
+<style lang='less' scoped>
+.el-header {
+  background-color: #333;
+}
+.el-main {
+  padding: 0;
+}
 </style>
