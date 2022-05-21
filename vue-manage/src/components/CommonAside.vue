@@ -2,23 +2,28 @@
   <el-menu
     default-active="1-4-1"
     class="el-menu-vertical-demo"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
     @open="handleOpen"
     @close="handleClose"
     :collapse="isCollapse"
+    style="min-height: 100vh; width: 230px; float: left"
   >
-    <h4>通用后台管理系统</h4>
+    <h3>通用后台管理系统</h3>
     <el-menu-item
       v-for="item in noChildren"
       :index="item.path"
       :key="item.path"
+      @click="clickMenu(item)"
     >
-      <i class="'el-icon-' + item.icon"></i>
+      <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
     </el-menu-item>
 
     <el-submenu v-for="item in hasChildren" :index="item.path" :key="item.path">
       <template slot="title">
-        <i class="'el-icon-' + item.icon"></i>
+        <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
       </template>
       <el-menu-item-group
@@ -39,7 +44,7 @@ export default {
       menu: [
         {
           path: "/",
-          name: "Home",
+          name: "home",
           label: "首页",
           icon: "s-home",
           url: "Home/Home",
@@ -88,6 +93,11 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    clickMenu(item) {
+      this.$router.push({
+        name: item.name,
+      });
+    },
   },
   computed: {
     noChildren() {
@@ -103,5 +113,20 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+}
+
+.el-menu {
+  // overflow-y: auto;
+  // height: 100vh;
+  // border: none;
+  // width: auto;
+  // height: 100%;
+  // background: #1a3066;
+  // position: relative;
+  h3 {
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+  }
 }
 </style>

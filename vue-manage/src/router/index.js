@@ -8,14 +8,22 @@ Vue.use(Router)
 export const constantRoutes = [
     {
         path: '/',
-        name: 'Home',
-        component: (resolve) => require(['@/views/Home'], resolve),
+        name: 'Main',
+        component: (resolve) => require(['@/views/Main'], resolve),
+        children: [
+            {
+                path: 'home',
+                name: 'home',
+                component: (resolve) => require(['@/views/home'], resolve),
+            },
+            {
+                path: 'user',
+                name: 'user',
+                component: (resolve) => require(['@/views/user'], resolve),
+            }
+        ]
     },
-    {
-        path: '/user',
-        name: 'User',
-        component: (resolve) => require(['@/views/User'], resolve),
-    }
+
 ]
 
 
