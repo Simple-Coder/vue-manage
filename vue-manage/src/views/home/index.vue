@@ -44,7 +44,7 @@
         </el-card>
       </div>
       <el-card style="height: 280px">
-        <!-- <div style="height: 280px" ref="echarts"></div> -->
+        <div style="height: 280px" ref="echarts"></div>
         <!-- <echarts :chart-data="echartData.order" style="height: 280px"></echarts> -->
       </el-card>
       <div class="graph">
@@ -63,6 +63,8 @@
 
 <script>
 import { getData } from "../../api/data";
+import * as echarts from "echarts";
+// import Echarts from '../../src/components/ECharts'
 export default {
   name: "home",
   data() {
@@ -177,19 +179,19 @@ export default {
         // this.echartData.order.xData = order.date
         // this.echartData.order.series = series
         // 把ECharts封装成了Vue组件之后，下面这些就不用写了
-        // const option = {
-        //   xAxis: {
-        //     data: order.date
-        //   },
-        //   yAxis: {},
-        //   legend: {
-        //     data: keyArray
-        //   },
-        //   series
-        // }
-        // // 绘制折线图
-        // const E = echarts.init(this.$refs.echarts)
-        // E.setOption(option)
+        const option = {
+          xAxis: {
+            data: order.date,
+          },
+          yAxis: {},
+          legend: {
+            data: keyArray,
+          },
+          series,
+        };
+        // 绘制折线图
+        const E = echarts.init(this.$refs.echarts);
+        E.setOption(option);
 
         // this.echartData.user.xData = data.userData.map(item => item.date)
         // this.echartData.user.series = [
