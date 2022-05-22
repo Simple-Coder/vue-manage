@@ -21,7 +21,11 @@
       <span slot="title">{{ item.label }}</span>
     </el-menu-item>
 
-    <el-submenu v-for="item in hasChildren" :index="item.path" :key="item.path">
+    <el-submenu
+      v-for="item in hasChildren"
+      :index="item.path + ''"
+      :key="item.path"
+    >
       <template slot="title">
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
@@ -29,8 +33,9 @@
       <el-menu-item-group
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
+        :index="subIndex + ''"
       >
-        <el-menu-item :index="subIndex">{{ subItem.label }}</el-menu-item>
+        <el-menu-item>{{ subItem.label }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>

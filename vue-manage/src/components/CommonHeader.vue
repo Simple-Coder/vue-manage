@@ -1,14 +1,9 @@
 <template>
   <header>
     <div class="left-content">
-      <el-button
-        @click="handleMenu"
-        plain
-        icon="el-icon-menu"
-        size="mini"
-      ></el-button>
-      <h3 style="color: white">首页</h3>
-      <el-breadcrumb separator="/">
+      <el-button plain icon="el-icon-menu" size="mini"></el-button>
+      <!-- <h3 style="color: white">首页</h3> -->
+      <!-- <el-breadcrumb separator="/">
         <el-breadcrumb-item
           v-for="item in tags"
           :key="item.path"
@@ -16,7 +11,7 @@
         >
           {{ item.label }}
         </el-breadcrumb-item>
-      </el-breadcrumb>
+      </el-breadcrumb> -->
     </div>
     <div class="right-content">
       <el-dropdown trigger="click" size="mini">
