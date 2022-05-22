@@ -17,9 +17,13 @@ import '@/assets/less/index.less'
 import store from '@/store'
 // axios
 import http from 'axios'
-Vue.prototype.$http = http
+
 //mock
 import '@/api/mock'
+
+Vue.prototype.$http = http
+// Vue.prototype.$confirm = MessageBox.confirm
+// Vue.prototype.$message = Message
 
 new Vue({
   store,
