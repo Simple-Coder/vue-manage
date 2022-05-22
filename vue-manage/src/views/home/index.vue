@@ -62,49 +62,51 @@
 </template>
 
 <script>
+import { getData } from "../../api/data";
 export default {
   name: "home",
   data() {
     return {
       userIcon: require("@/assets/images/user.png"),
-      tableData: [
-        {
-          name: "oppo",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "vivo",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "苹果",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "小米",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "三星",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "魅族",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-      ],
+      tableData: [],
+      //   tableData: [
+      //     {
+      //       name: "oppo",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //     {
+      //       name: "vivo",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //     {
+      //       name: "苹果",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //     {
+      //       name: "小米",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //     {
+      //       name: "三星",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //     {
+      //       name: "魅族",
+      //       todayBuy: 100,
+      //       monthBuy: 300,
+      //       totalBuy: 800,
+      //     },
+      //   ],
       tableLabel: {
         name: "课程",
         todayBuy: "今日购买",
@@ -158,19 +160,140 @@ export default {
 
   methods: {},
   mounted() {
-    // this.$http
-    //   .get("/user?ID=12345")
-    //   .then(function (response) {
-    //     // 处理成功情况
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // 处理错误情况
-    //     console.log(error);
-    //   })
-    //   .then(function () {
-    //     // 总是会执行
-    //   });
+    getData().then((res) => {
+      const { code, data } = res.data;
+      if (code === 20000) {
+        this.tableData = data.tableData;
+        const order = data.orderData;
+        const keyArray = Object.keys(order.data[0]);
+        const series = [];
+        keyArray.forEach((key) => {
+          series.push({
+            name: key,
+            data: order.data.map((item) => item[key]),
+            type: "line",
+          });
+        });
+        // this.echartData.order.xData = order.date
+        // this.echartData.order.series = series
+        // 把ECharts封装成了Vue组件之后，下面这些就不用写了
+        // const option = {
+        //   xAxis: {
+        //     data: order.date
+        //   },
+        //   yAxis: {},
+        //   legend: {
+        //     data: keyArray
+        //   },
+        //   series
+        // }
+        // // 绘制折线图
+        // const E = echarts.init(this.$refs.echarts)
+        // E.setOption(option)
+
+        // this.echartData.user.xData = data.userData.map(item => item.date)
+        // this.echartData.user.series = [
+        //   {
+        //     name: '新增用户',
+        //     data: data.userData.map(item => item.new),
+        //     type: 'bar'
+        //   },
+        //   {
+        //     name: '活跃用户',
+        //     data: data.userData.map(item => item.active),
+        //     type: 'bar'
+        //     // bar 表示柱状图
+        //   }
+        // ]
+        // // 柱状图
+        // const userOption = {
+        //   legend: {
+        //     // 图例文字颜色
+        //     textStyle: {
+        //       color: "#333",
+        //     },
+        //   },
+        //   grid: {
+        //     left: "20%",
+        //   },
+        //   // 提示框
+        //   tooltip: {
+        //     trigger: "axis",
+        //   },
+        //   xAxis: {
+        //     type: "category", // 类目轴
+        //     data: data.userData.map(item => item.date),
+        //     axisLine: {
+        //       lineStyle: {
+        //         color: "#17b3a3",
+        //       },
+        //     },
+        //     axisLabel: {
+        //       interval: 0,
+        //       color: "#333",
+        //     },
+        //   },
+        //   yAxis: [
+        //     {
+        //       type: "value",
+        //       axisLine: {
+        //         lineStyle: {
+        //           color: "#17b3a3",
+        //         },
+        //       },
+        //     },
+        //   ],
+        //   color: ["#2ec7c9", "#b6a2de"],
+        //   series: [
+        //     {
+        //       name: '新增用户',
+        //       data: data.userData.map(item => item.new),
+        //       type: 'bar'
+        //     },
+        //     {
+        //       name: '活跃用户',
+        //       data: data.userData.map(item => item.active),
+        //       type: 'bar'
+        //       // bar 表示柱状图
+        //     }
+        //   ],
+        // }
+        // const U = echarts.init(this.$refs.userEcharts)
+        // U.setOption(userOption)
+
+        // this.echartData.video.series = [
+        //   {
+        //     data: data.videoData,
+        //     type: 'pie'
+        //   }
+        // ]
+        // // 饼图
+        // const videoOption = {
+        //   tooltip: {
+        //     trigger: "item",
+        //   },
+        //   color: [
+        //     "#0f78f4",
+        //     "#dd536b",
+        //     "#9462e5",
+        //     "#a6a6a6",
+        //     "#e1bb22",
+        //     "#39c362",
+        //     "#3ed1cf",
+        //   ],
+        //   series: [
+        //     {
+        //       data: data.videoData,
+        //       type: 'pie'
+        //     }
+        //   ],
+        // }
+        // const V = echarts.init(this.$refs.videoEcharts)
+        // V.setOption(videoOption)
+      } else {
+      }
+      console.log(res);
+    });
   },
 };
 </script>

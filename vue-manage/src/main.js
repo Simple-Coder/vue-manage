@@ -18,7 +18,8 @@ import store from '@/store'
 // axios
 import http from 'axios'
 Vue.prototype.$http = http
-
+//mock
+import '@/api/mock'
 
 new Vue({
   store,
