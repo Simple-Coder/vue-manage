@@ -13,9 +13,10 @@ Vue.use(ElementUI);
 
 // 使用less样式文件
 import '@/assets/less/index.less'
-
-
+//store 
+import store from '@/store'
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

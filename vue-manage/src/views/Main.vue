@@ -19,7 +19,7 @@ import CommonAside from "@/components/CommonAside";
 import CommonHeader from "@/components/CommonHeader";
 
 export default {
-  name: "Main",
+  name: "Home",
   data() {
     return {};
   },

@@ -9,7 +9,9 @@
     @close="handleClose"
     :collapse="isCollapse"
   >
-    <h3>通用后台管理系统</h3>
+    <router-link to="/">
+      <h3>{{ isCollapse ? "后台" : "Vue后台管理系统" }}</h3>
+    </router-link>
     <el-menu-item
       v-for="item in noChildren"
       :index="item.path"
@@ -44,31 +46,32 @@
 export default {
   data() {
     return {
-      isCollapse: false,
+      // isCollapse: false,
       menu: [
         {
           path: "/",
           name: "home",
           label: "首页",
           icon: "s-home",
-          url: "Home/Home",
+          url: "/Home/Home",
         },
         {
           path: "/mall",
           name: "mall",
           label: "商品管理",
           icon: "video-play",
-          url: "MallManage/MallManage",
+          url: "/MallManage/MallManage",
         },
         {
           path: "/user",
           name: "user",
           label: "用户管理",
           icon: "user",
-          url: "UserManage/UserManage",
+          url: "/UserManage/UserManage",
         },
         {
-          label: "其他",
+          label: "其它",
+          name: "other",
           icon: "location",
           children: [
             {
@@ -76,14 +79,14 @@ export default {
               name: "page1",
               label: "页面1",
               icon: "setting",
-              url: "Other/PageOne",
+              url: "/Other/PageOne",
             },
             {
               path: "/page2",
               name: "page2",
               label: "页面2",
               icon: "setting",
-              url: "Other/PageTwo",
+              url: "/Other/PageTwo",
             },
           ],
         },
@@ -109,6 +112,9 @@ export default {
     },
     hasChildren() {
       return this.menu.filter((item) => item.children);
+    },
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
     },
   },
 };
