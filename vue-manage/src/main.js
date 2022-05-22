@@ -15,6 +15,11 @@ Vue.use(ElementUI);
 import '@/assets/less/index.less'
 //store 
 import store from '@/store'
+// axios
+import http from 'axios'
+Vue.prototype.$http = http
+
+
 new Vue({
   store,
   router,
