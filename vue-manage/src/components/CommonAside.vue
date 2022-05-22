@@ -8,7 +8,6 @@
     @open="handleOpen"
     @close="handleClose"
     :collapse="isCollapse"
-    style="min-height: 100vh; width: 230px; float: left"
   >
     <h3>通用后台管理系统</h3>
     <el-menu-item
@@ -114,22 +113,18 @@ export default {
   },
 };
 </script>
-<style lang='less' scoped>
+<style lang="less">
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
 }
 
 .el-menu {
-  // overflow-y: auto;
-  // height: 100vh;
-  // border: none;
-  // width: auto;
-  // height: 100%;
-  // background: #1a3066;
-  // position: relative;
+  height: 100%;
+  border: none;
+
   h3 {
-    color: #fff;
+    color: white;
     text-align: center;
     line-height: 48px;
   }
