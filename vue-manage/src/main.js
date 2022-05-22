@@ -11,8 +11,8 @@ Vue.config.productionTip = false
 // 使用element-ui生效
 Vue.use(ElementUI);
 
-
-
+// 使用less样式文件
+import '@/assets/less/index.less'
 
 
 new Vue({
