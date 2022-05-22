@@ -25,6 +25,39 @@
         </el-table>
       </el-card>
     </el-col>
+    <el-col :span="16" style="margin-top: 20px">
+      <div class="num">
+        <el-card
+          v-for="item in countData"
+          :key="item.name"
+          :body-style="{ display: 'flex', padding: 0 }"
+        >
+          <i
+            class="icon"
+            :class="`el-icon-${item.icon}`"
+            :style="{ backgroundColor: item.color }"
+          ></i>
+          <div class="detail">
+            <p class="num">￥{{ item.value }}</p>
+            <p class="txt">{{ item.name }}</p>
+          </div>
+        </el-card>
+      </div>
+      <el-card style="height: 280px">
+        <!-- <div style="height: 280px" ref="echarts"></div> -->
+        <!-- <echarts :chart-data="echartData.order" style="height: 280px"></echarts> -->
+      </el-card>
+      <div class="graph">
+        <el-card style="height: 260px">
+          <!--<div style="height: 240px" ref="userEcharts"></div>-->
+          <!-- <echarts :chart-data="echartData.user" style="height: 240px"></echarts> -->
+        </el-card>
+        <el-card style="height: 260px">
+          <!--<div style="height: 240px" ref="videoEcharts"></div>-->
+          <!-- <echarts :chart-data="echartData.video" :is-axis-chart="false" style="height: 240px"></echarts> -->
+        </el-card>
+      </div>
+    </el-col>
   </el-row>
 </template>
 
@@ -78,6 +111,44 @@ export default {
         monthBuy: "本月购买",
         totalBuy: "总购买",
       },
+      countData: [
+        {
+          name: "今日支付订单",
+          value: 1234,
+          icon: "success",
+          color: "#2ec7c9",
+        },
+        {
+          name: "今日收藏订单",
+          value: 210,
+          icon: "star-on",
+          color: "#ffb980",
+        },
+        {
+          name: "今日未支付订单",
+          value: 1234,
+          icon: "s-goods",
+          color: "#5ab1ef",
+        },
+        {
+          name: "本月支付订单",
+          value: 1234,
+          icon: "success",
+          color: "#2ec7c9",
+        },
+        {
+          name: "本月收藏订单",
+          value: 210,
+          icon: "star-on",
+          color: "#ffb980",
+        },
+        {
+          name: "本月未支付订单",
+          value: 1234,
+          icon: "s-goods",
+          color: "#5ab1ef",
+        },
+      ],
     };
   },
 
