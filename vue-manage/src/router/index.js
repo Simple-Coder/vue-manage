@@ -12,15 +12,30 @@ export const constantRoutes = [
         component: (resolve) => require(['@/views/Main'], resolve),
         children: [
             {
-                path: 'home',
+                path: '/home',
                 name: 'home',
-                component: (resolve) => require(['@/views/home'], resolve),
+                component: () => import('@/views/home')
             },
             {
-                path: 'user',
+                path: '/user',
                 name: 'user',
-                component: (resolve) => require(['@/views/user'], resolve),
-            }
+                component: () => import('@/views/user')
+            },
+            {
+                path: '/mall',
+                name: 'mall',
+                component: () => import('@/views/mall')
+            },
+            {
+                path: '/page1',
+                name: 'page1',
+                component: () => import('@/views/other/pageOne')
+            },
+            {
+                path: '/page2',
+                name: 'page2',
+                component: () => import('@/views/other/pageTwo')
+            },
         ]
     },
 

@@ -31,13 +31,22 @@
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
       </template>
-      <el-menu-item-group
+      <el-menu-item
+        @click="clickMenu(subItem)"
+        v-for="subItem in item.children"
+        :key="subItem.path"
+        :index="subItem.path"
+      >
+        <i :class="`el-icon-${subItem.icon}`"></i>
+        <span slot="title">{{ subItem.label }}</span>
+      </el-menu-item>
+      <!-- <el-menu-item-group
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
         :index="subIndex + ''"
       >
         <el-menu-item>{{ subItem.label }}</el-menu-item>
-      </el-menu-item-group>
+      </el-menu-item-group> -->
     </el-submenu>
   </el-menu>
 </template>
