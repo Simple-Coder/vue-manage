@@ -38,8 +38,8 @@
   </el-form>
 </template>
 <script>
-// import Mock from 'mockjs'
-import { getMenu } from "../../api/data";
+// import Mock from "mockjs";
+import { getMenu } from "@/api/data";
 
 export default {
   name: "login",
@@ -67,9 +67,9 @@ export default {
   },
   methods: {
     login() {
-      // const token =Mock.random.guid()
-      // this.$store.commit('setToken',token)
-      // this.$router.push({name:'home'})
+      //   const token = Mock.random.guid();
+      //   this.$store.commit("setToken", token);
+      //   this.$router.push({ name: "home" });
 
       getMenu(this.form).then(({ data: res }) => {
         console.log("res", res);
